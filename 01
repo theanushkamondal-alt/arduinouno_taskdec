@@ -1,0 +1,12 @@
+void setup() {
+  // Commands inside here run once when you power on
+  pinMode(13, OUTPUT); 
+}
+
+void loop() {
+  // Commands inside here run repeatedly
+  digitalWrite(13, HIGH);
+  delay(100);
+  digitalWrite(13, LOW);
+  delay(100);
+}
