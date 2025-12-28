@@ -1,0 +1,32 @@
+int myPin = A2;      
+int readVal;        
+float V2;           
+int dt = 250;       
+int redPin = 9;    
+void setup() {
+  pinMode(myPin, INPUT);    
+  pinMode(redPin, OUTPUT);   
+  Serial.begin(9600);        
+}
+
+void loop() {
+
+  readVal = analogRead(myPin);
+  V2 = (5.0 / 1023.0) * readVal;
+
+  
+  Serial.print("Potentiometer voltage is ");
+  Serial.println(V2);
+
+ 
+  if (V2 > 2.0 && V2 < 3.0) {
+    digitalWrite(redPin, HIGH);
+  }
+
+ 
+  if (V2 < 2.0 || V2 > 3.0) {
+    digitalWrite(redPin, LOW);
+  }
+
+  delay(dt);
+}
