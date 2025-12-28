@@ -1,0 +1,49 @@
+// --- VARIABLE DEFINITIONS ---
+// Use 'int' for whole numbers and 'float' for decimals
+int redLED = 8;      
+int dit = 250;      
+int da = 700;       
+int longWait = 2000; 
+// Examples of other variable types (not used in this specific circuit)
+float pi = 3.14; 
+String myName = "Anushka Mondal";
+
+void setup() {
+  
+  pinMode(redLED, OUTPUT);
+}
+
+void loop() {
+
+  digitalWrite(redLED, HIGH); delay(dit);
+  digitalWrite(redLED, LOW);  delay(dit);
+  
+  digitalWrite(redLED, HIGH); delay(dit);
+  digitalWrite(redLED, LOW);  delay(dit);
+  
+  digitalWrite(redLED, HIGH); delay(dit);
+  digitalWrite(redLED, LOW);  delay(dit);
+
+
+  digitalWrite(redLED, HIGH); delay(da);
+  digitalWrite(redLED, LOW);  delay(da);
+  
+  digitalWrite(redLED, HIGH); delay(da);
+  digitalWrite(redLED, LOW);  delay(da);
+  
+  digitalWrite(redLED, HIGH); delay(da);
+  digitalWrite(redLED, LOW);  delay(da);
+
+  
+  digitalWrite(redLED, HIGH); delay(dit);
+  digitalWrite(redLED, LOW);  delay(dit);
+  
+  digitalWrite(redLED, HIGH); delay(dit);
+  digitalWrite(redLED, LOW);  delay(dit);
+  
+  digitalWrite(redLED, HIGH); delay(dit);
+  digitalWrite(redLED, LOW);  delay(dit);
+
+ 
+  delay(longWait);
+}
