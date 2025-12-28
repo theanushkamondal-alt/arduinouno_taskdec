@@ -1,0 +1,25 @@
+// C++ code
+//
+int dt=100,potVal;
+int rPin=7,VPin=A4;
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(rPin,OUTPUT);
+  pinMode(VPin,INPUT);
+}
+
+void loop()
+{
+  potVal=analogRead(VPin);
+  Serial.println(potVal);
+  delay(dt);
+  while(potVal>1000)
+  {
+    digitalWrite(rPin,HIGH);
+    potVal=analogRead(VPin);
+    Serial.println(potVal);
+    delay(dt);
+  }
+  digitalWrite(rPin,LOW);
+}
