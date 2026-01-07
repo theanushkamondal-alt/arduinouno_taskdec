@@ -1,0 +1,31 @@
+// C++ code
+//
+#include <Servo.h>
+
+int servoPin = 9;
+int servoPos = 0;
+Servo myServo;
+
+void setup() {
+  Serial.begin(9600);
+  myServo.attach(servoPin);
+}
+
+void loop() {
+  Serial.println("What angle for the servo?");
+  
+  while (Serial.available() == 0) {
+  
+  }
+  
+  servoPos = Serial.parseInt();
+  
+  if (servoPos > 165) {
+    servoPos = 165;
+  }
+  if (servoPos < 0) {
+    servoPos = 0;
+  }
+  
+  myServo.write(servoPos);
+}
