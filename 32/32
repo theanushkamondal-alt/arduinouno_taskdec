@@ -1,0 +1,25 @@
+int XPin=A3,YPin=A1,switchPin=9;
+int XVal,YVal,SVal;
+int dT=500;
+void setup()
+{
+  pinMode(XPin,INPUT);
+  pinMode(YPin,INPUT);
+  pinMode(switchPin,INPUT);
+  Serial.begin(9600);
+  digitalWrite(switchPin,HIGH);
+}
+
+void loop()
+{
+  XVal=analogRead(XPin);
+  YVal=analogRead(YPin);
+  SVal=digitalRead(switchPin);
+  delay(dT);
+  Serial.print("X Value = ");
+  Serial.print(XVal);
+  Serial.print(" Y Value = ");
+  Serial.print(YVal);
+  Serial.print(" Switch state is ");
+  Serial.println(SVal);
+}
