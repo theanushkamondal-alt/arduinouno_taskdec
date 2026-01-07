@@ -1,0 +1,17 @@
+// C++ code
+//
+int buttonPin=5,buttonVal,dT=500;
+void setup()
+{
+  pinMode(buttonPin,INPUT);
+  digitalWrite(buttonPin,HIGH);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  buttonVal=digitalRead(buttonPin);
+  Serial.print("Your button is ");
+  Serial.println(buttonVal);
+  delay(dT);
+}
