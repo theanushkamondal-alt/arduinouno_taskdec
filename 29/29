@@ -1,0 +1,54 @@
+int buttonPin1 = 12;
+int buttonPin2 = 11;
+int buttonVal1;
+int buttonVal2;
+int ledPin = 3;
+int ledBright = 0;
+int buzzPin = 2;
+int dt = 250;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(buttonPin1, INPUT);
+  pinMode(buttonPin2, INPUT);
+  pinMode(ledPin, OUTPUT);
+  pinMode(buzzPin, OUTPUT);
+}
+
+void loop() {
+  buttonVal1 = digitalRead(buttonPin1);
+  buttonVal2 = digitalRead(buttonPin2);
+
+  if (buttonVal1 == 0) {
+    ledBright = ledBright + 5;
+  }
+  
+  if (buttonVal2 == 0) {
+    ledBright = ledBright - 5;
+  }
+
+  if (ledBright > 100) {
+    ledBright = 100;
+    digitalWrite(buzzPin, HIGH);
+    delay(dt);
+    digitalWrite(buzzPin, LOW);
+  }
+
+  if (ledBright < 0) {
+    ledBright = 0;
+    digitalWrite(buzzPin, HIGH);
+    delay(dt);
+    digitalWrite(buzzPin, LOW);
+  }
+
+  analogWrite(ledPin, ledBright);
+
+  Serial.print("Button 1: ");
+  Serial.print(buttonVal1);
+  Serial.print(" | Button 2: ");
+  Serial.print(buttonVal2);
+  Serial.print(" | Brightness: ");
+  Serial.println(ledBright);
+
+  delay(dt);
+}
