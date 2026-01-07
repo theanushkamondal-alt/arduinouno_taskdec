@@ -1,0 +1,61 @@
+// C++ code
+//
+#include <Servo.h>
+
+Servo Xservo;
+Servo Yservo;
+
+int Xpin = A0;
+int Ypin = A1;
+int Spin = 2;
+int XservoPin = 9;
+int YservoPin = 10;
+int buzzPin = 7;
+
+int Xval;
+int Yval;
+int Sval;
+int WVx;
+int WVy;
+int dt = 200;
+
+void setup() {
+  Serial.begin(9600);
+  
+  pinMode(Xpin, INPUT);
+  pinMode(Ypin, INPUT);
+  pinMode(Spin, INPUT);
+  pinMode(buzzPin, OUTPUT);
+  
+  Xservo.attach(XservoPin);
+  Yservo.attach(YservoPin);
+  
+  digitalWrite(Spin, HIGH);
+}
+
+void loop() {
+  Xval = analogRead(Xpin);
+  Yval = analogRead(Ypin);
+  Sval = digitalRead(Spin);
+
+  WVx = (180.0 / 1023.0) * Xval;
+  WVy = (180.0 / 1023.0) * Yval;
+
+  Xservo.write(WVx);
+  Yservo.write(WVy);
+
+  if (Sval == 0) {
+    digitalWrite(buzzPin, HIGH);
+  } else {
+    digitalWrite(buzzPin, LOW);
+  }
+
+  Serial.print("X Value = ");
+  Serial.print(Xval);
+  Serial.print(" | Y Value = ");
+  Serial.print(Yval);
+  Serial.print(" | Switch = ");
+  Serial.println(Sval);
+
+  delay(dt);
+}
