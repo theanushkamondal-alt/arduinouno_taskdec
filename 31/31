@@ -1,0 +1,29 @@
+#include <Servo.h>
+
+int lightPin = A4;
+int lightVal;
+int servoPin = 9;
+float angle; 
+int dt = 250;
+Servo myServo;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(lightPin, INPUT);
+  myServo.attach(servoPin);
+}
+
+void loop() {
+  lightVal = analogRead(lightPin);
+
+  angle = (-16.0 / 63.0) * lightVal + (16.0 * 780.0 / 63.0);
+
+  myServo.write(angle);
+
+  Serial.print("Light Value: ");
+  Serial.print(lightVal);
+  Serial.print(" | Calculated Angle: ");
+  Serial.println(angle);
+
+  delay(dt);
+}
