@@ -1,0 +1,26 @@
+nt lightPin = A0; 
+int buzzPin = 8;
+int lightVal;
+float delayTime;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(lightPin, INPUT);
+  pinMode(buzzPin, OUTPUT);
+}
+
+void loop() {
+  lightVal = analogRead(lightPin);
+
+  delayTime = (9.0 / 550.0) * lightVal - (9.0 * 200.0 / 550.0) + 1.0;
+
+  digitalWrite(buzzPin, HIGH);
+  delay(delayTime);
+  digitalWrite(buzzPin, LOW);
+  delay(delayTime);
+
+  Serial.print("Light Val: ");
+  Serial.print(lightVal);
+  Serial.print(" | Delay Time: ");
+  Serial.println(delayTime);
+}
