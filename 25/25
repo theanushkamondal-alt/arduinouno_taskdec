@@ -1,0 +1,26 @@
+int LPin=A0,LVal,dT=1000;
+int rPin=5,gPin=11;
+void setup()
+{
+  pinMode(LPin,INPUT);
+  pinMode(rPin,OUTPUT);
+  pinMode(gPin,OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  LVal=analogRead(LPin);
+  Serial.println(LVal);
+  delay(dT);
+  if(LVal<450)
+  {
+    digitalWrite(rPin,HIGH);
+    digitalWrite(gPin,LOW);
+  }
+  if(LVal>450)
+  {
+    digitalWrite(rPin,LOW);
+    digitalWrite(gPin,HIGH);
+  }
+}
